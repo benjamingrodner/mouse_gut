@@ -1,0 +1,16 @@
+#!/bin/bash
+# Compress image czi by sample
+
+# Obtain sample names
+samples=$(find data/raw_images/*.czi | ggrep -Po [[:alnum:]_-]+\(?=_chan\) | sort -u)
+# Iterate through sample names and write to a tarball
+for i in $samples; 
+  do find data/raw_images -type f -name "$i"_chan_*.czi -print0 |
+    tar -czvf data/raw_images/"$i".tar.gz --null -T -;
+    if test -f data/raw_images/"$i".tar.gz;
+      then rm data/raw_images/"$i"_chan_*.czi;
+      else echo "Error: images not compressed";
+      fi;
+  done
+
+# if test -f data/raw_images/2019_10_12_saber_gfp-copynumber_h_atc_500nM_probe_extbranch_fov_1_chan_633.czi; then echo 1; else echo 0; fi

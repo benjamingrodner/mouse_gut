@@ -1,0 +1,3 @@
+[submodule "experiments/2019_12_05_hao_redo/scripts/hao_image_analysis"]
+	path = experiments/2019_12_05_hao_redo/scripts/hao_image_analysis
+	url = https://github.com/proudquartz/hiprfish-image-analysis.git
